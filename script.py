@@ -24,7 +24,7 @@ class FacialExpressionModel(object):
         self.preds = self.loaded_model.predict(img)
         return FacialExpressionModel.EMOTIONS_LIST[np.argmax(self.preds)]
     
-path = r'/Users/tadhgsavage/Desktop/COMP3018/Coding /trained_weights' # change this to the path where you have saved the model
+path = r'/Users/tadhgsavage/Desktop/COMP3018/Coding /Facial_Recognition/trained_weights' # change this to the path where you have saved the model
 os.chdir(path)     
 model = FacialExpressionModel("model.json", "model.weights.h5")
 
