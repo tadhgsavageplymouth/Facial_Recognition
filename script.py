@@ -23,9 +23,7 @@ class FacialExpressionModel(object):
     def predict_emotion(self, img):
         self.preds = self.loaded_model.predict(img)
         return FacialExpressionModel.EMOTIONS_LIST[np.argmax(self.preds)]
-    
-path = r'/Users/Simon Ssenjovu/Facial_Recognition/trained_weights' # change this to the path where you have saved the model
-os.chdir(path)     
+      
 model = FacialExpressionModel("model.json", "model.weights.h5")
 
 #faces = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
