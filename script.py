@@ -7,6 +7,12 @@ from IPython.display import SVG, Image
 from livelossplot.inputs.tf_keras import PlotLossesCallback
 from tensorflow.keras.models import model_from_json
 import os
+from openai import OpenAI
+from naoqi import ALProxy
+
+
+export PYTHONPATH = ${PYTHONPATH}:
+
 class FacialExpressionModel(object):
     EMOTIONS_LIST = ["Angry", "Disgust",
                     "Fear", "Happy",
@@ -58,3 +64,18 @@ def gen(camera):
     cv2.destroyAllWindows()
     
 gen(VideoCamera())
+
+client = OpenAI()
+client.api_key = "api-key"
+response = client.ChatCompletion.create(
+    model="gpt-4",
+    messages = [
+    {"role": "user", "content": "Hello, how are you?"},
+    {"role": "assistant", "content": "I am fine, thank you!"}
+    ]
+)
+print(response['choices'][0]['message']['content'])
+# The above code is a simple facial expression recognition system using OpenCV and TensorFlow.
+     
+tts = ALProxy("ALTextTospeech", "<IP of Nao>", 9559)
+tts.say("Hello, I am Nao!")
