@@ -11,8 +11,6 @@ from openai import OpenAI
 from naoqi import ALProxy
 
 
-export PYTHONPATH = ${PYTHONPATH}:
-
 class FacialExpressionModel(object):
     EMOTIONS_LIST = ["Angry", "Disgust",
                     "Fear", "Happy",
